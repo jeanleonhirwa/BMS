@@ -37,3 +37,37 @@
 .card.expenses {
   border-left-color: var(--color-accent-expense);
 }
+
+.dashboard-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-5);
+  margin-top: var(--spacing-5);
+}
+
+@media (min-width: 768px) {
+  .dashboard-content-grid {
+    grid-template-columns: 1fr 1fr; /* Two columns on larger screens */
+  }
+}
+
+.chart-card {
+  border-left: none; /* Remove left border for chart card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-card h2 {
+  margin-bottom: var(--spacing-4);
+  text-align: center;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 350px; /* Limit chart size */
+  height: 350px;
+  margin: auto;
+}

@@ -15,6 +15,7 @@ testDbConnection();
 // Define Routes
 app.use('/api/summary', require('./routes/summary'));
 app.use('/api/transactions', require('./routes/transactions'));
+app.use('/api/goals', require('./routes/goals'));
 
 // Start Server
 app.listen(port, () => {

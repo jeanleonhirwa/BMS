@@ -13,6 +13,9 @@ const Sidebar = () => {
           <li>
             <Link to="/transactions">Transactions</Link>
           </li>
+          <li>
+            <Link to="/goals">Savings Goals</Link>
+          </li>
         </ul>
       </nav>
     </div>
