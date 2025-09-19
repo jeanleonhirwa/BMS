@@ -48,3 +48,14 @@
 .sidebar nav a.active {
   background-color: rgba(255, 255, 255, 0.1);
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar on small screens */
+  }
+
+  .content-area {
+    padding: var(--spacing-3);
+  }
+}

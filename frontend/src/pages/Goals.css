@@ -92,3 +92,13 @@
 .goal-actions button:hover {
   background-color: #0b5ed7;
 }
+
+@media (max-width: 480px) {
+  .goal-actions {
+    flex-direction: column;
+  }
+
+  .goal-actions button {
+    width: 100%;
+  }
+}

@@ -96,3 +96,13 @@
   font-family: var(--font-family);
   font-size: 0.9rem;
 }
+
+@media (max-width: 480px) {
+  .transactions-table td:last-child {
+    flex-direction: column;
+  }
+
+  .transactions-table button {
+    width: 100%;
+  }
+}
