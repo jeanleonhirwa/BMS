@@ -38,6 +38,13 @@
   border-radius: var(--border-radius);
   font-family: var(--font-family);
   font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-accent-primary);
 }
 
 .submit-btn {

@@ -74,4 +74,83 @@ router.post('/', async (req, res) => {
   }
 });
 
+// @route   PUT /api/transactions/:id
+// @desc    Update a transaction
+// @access  Public
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { amount, description, type, category } = req.body;
+
+  if (!amount || !description || !type || !category) {
+    return res.status(400).json({ msg: 'Please provide all fields for update' });
+  }
+
+  let connection;
+  try {
+    connection = await pool.getConnection();
+
+    // Find or create category
+    let [categories] = await connection.execute(
+      'SELECT id FROM categories WHERE name = ?',
+      [category]
+    );
+
+    let categoryId;
+    if (categories.length === 0) {
+      const [result] = await connection.execute(
+        'INSERT INTO categories (name) VALUES (?)',
+        [category]
+      );
+      categoryId = result.insertId;
+    } else {
+      categoryId = categories[0].id;
+    }
+
+    const [result] = await connection.execute(
+      'UPDATE transactions SET amount = ?, description = ?, type = ?, category_id = ? WHERE id = ?',
+      [amount, description, type, categoryId, id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ msg: 'Transaction not found' });
+    }
+
+    res.json({ msg: 'Transaction updated successfully' });
+
+  } catch (error) {
+    console.error('Error updating transaction:', error.message);
+    res.status(500).json({ msg: 'Server error', error: error.message });
+  } finally {
+    if (connection) connection.release();
+  }
+});
+
+// @route   DELETE /api/transactions/:id
+// @desc    Delete a transaction
+// @access  Public
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const [result] = await connection.execute(
+      'DELETE FROM transactions WHERE id = ?',
+      [id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ msg: 'Transaction not found' });
+    }
+
+    res.json({ msg: 'Transaction deleted successfully' });
+
+  } catch (error) {
+    console.error('Error deleting transaction:', error.message);
+    res.status(500).json({ msg: 'Server error', error: error.message });
+  } finally {
+    if (connection) connection.release();
+  }
+});
+
 module.exports = router;
