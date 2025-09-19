@@ -1,0 +1,50 @@
+/* === Main App Layout === */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: var(--spacing-4);
+}
+
+/* === Sidebar Component Styles === */
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background-color: var(--color-sidebar-bg);
+  color: var(--color-text-light);
+  padding: var(--spacing-3);
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: var(--spacing-4);
+  color: var(--color-text-light);
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav li {
+  margin-bottom: var(--spacing-2);
+}
+
+.sidebar nav a {
+  display: block;
+  color: var(--color-text-light);
+  text-decoration: none;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}

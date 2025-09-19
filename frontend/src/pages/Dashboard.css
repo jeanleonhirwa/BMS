@@ -1,0 +1,39 @@
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+.card {
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-4);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  border-left: 5px solid var(--color-border);
+}
+
+.card h2 {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-2);
+  color: #6c757d;
+}
+
+.card p {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Card-specific border colors */
+.card.balance {
+  border-left-color: var(--color-accent-primary);
+}
+
+.card.income {
+  border-left-color: var(--color-accent-income);
+}
+
+.card.expenses {
+  border-left-color: var(--color-accent-expense);
+}
